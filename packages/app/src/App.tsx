@@ -37,9 +37,27 @@ import { AppRouter, FlatRoutes } from '@backstage/core-app-api';
 import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
+import { githubAuthApiRef } from '@backstage/core-plugin-api';
+import { DevToolsPage } from '@backstage/plugin-devtools';
+import { customDevToolsPage } from './components/devtools/CustomDevToolsPage';
+import { CatalogUnprocessedEntitiesPage } from '@backstage/plugin-catalog-unprocessed-entities';
 
 const app = createApp({
   apis,
+  components: {
+    SignInPage: props => (
+      <SignInPage
+        {...props}
+        auto
+        provider={{
+          id: 'github-auth-provider',
+          title: 'GitHub',
+          message: 'Sign in using GitHub',
+          apiRef: githubAuthApiRef,
+        }}
+      />
+    ),
+  },
   bindRoutes({ bind }) {
     bind(catalogPlugin.externalRoutes, {
       createComponent: scaffolderPlugin.routes.root,
@@ -56,9 +74,6 @@ const app = createApp({
     bind(orgPlugin.externalRoutes, {
       catalogIndex: catalogPlugin.routes.catalogIndex,
     });
-  },
-  components: {
-    SignInPage: props => <SignInPage {...props} auto providers={['guest']} />,
   },
 });
 
@@ -100,6 +115,13 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/devtools" element={<DevToolsPage />} >
+      {customDevToolsPage}
+    </Route>
+    <Route
+      path="/catalog-unprocessed-entities"
+      element={<CatalogUnprocessedEntitiesPage />}
+    />;
   </FlatRoutes>
 );
 

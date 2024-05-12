@@ -26,6 +26,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import BuildIcon from '@material-ui/icons/Build';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -83,6 +84,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         to="/settings"
       >
         <SidebarSettings />
+        <SidebarItem icon={BuildIcon} to="devtools" text="DevTools" />
       </SidebarGroup>
     </Sidebar>
     {children}

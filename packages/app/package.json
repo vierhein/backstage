@@ -27,6 +27,8 @@
     "@backstage/plugin-catalog-graph": "^0.4.4",
     "@backstage/plugin-catalog-import": "^0.10.10",
     "@backstage/plugin-catalog-react": "^1.11.3",
+    "@backstage/plugin-catalog-unprocessed-entities": "^0.2.3",
+    "@backstage/plugin-devtools": "^0.1.13",
     "@backstage/plugin-github-actions": "^0.6.15",
     "@backstage/plugin-org": "^0.6.24",
     "@backstage/plugin-permission-react": "^0.4.22",
@@ -51,10 +53,10 @@
   "devDependencies": {
     "@backstage/test-utils": "^1.5.4",
     "@playwright/test": "^1.32.3",
+    "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.0.0",
-    "@testing-library/dom": "^9.0.0",
     "@types/react-dom": "*",
     "cross-env": "^7.0.0"
   },
