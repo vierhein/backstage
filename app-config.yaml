@@ -71,9 +71,10 @@ auth:
         clientSecret: ${AUTH_GITHUB_CLIENT_SECRET}
         signIn:
           resolvers:
-            - resolver: emailMatchingUserEntityProfileEmail
-            - resolver: emailLocalPartMatchingUserEntityName
-            - resolver: usernameMatchingUserEntityName
+            - resolver: signInResolver
+#            - resolver: emailMatchingUserEntityProfileEmail
+#            - resolver: emailLocalPartMatchingUserEntityName
+#            - resolver: usernameMatchingUserEntityName
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
@@ -91,10 +92,10 @@ catalog:
         schedule:
           frequency: { minutes: 30 }
           timeout: { minutes: 5 }
-  locations:
-    # Local example organizational data
-    - type: file
-      target: ../../examples/org.yaml
-      rules:
-        - allow: [User, Group]
+  # locations:
+  #   # Local example organizational data
+  #   - type: file
+  #     target: ../../examples/org.yaml
+  #     rules:
+  #       - allow: [User, Group]
 
