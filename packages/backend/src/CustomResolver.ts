@@ -63,4 +63,4 @@ const customAuth = createBackendModule({
   },
 });
 
-module.exports = { customAuth };
+export { customAuth };
